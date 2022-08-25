@@ -3,4 +3,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  namespace :api,defaults: { format: 'json' } do
+    namespace :v1 do
+      post "order/create"=>"payments#order_create"
+      post "order/verify"=>"payments#verify_payment"
+   end
+  end
 end
