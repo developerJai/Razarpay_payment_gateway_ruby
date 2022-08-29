@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_07_183631) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_29_103135) do
   create_table "orders", force: :cascade do |t|
     t.string "razorpay_order_id"
     t.string "razorpay_payment_id"
@@ -25,12 +25,25 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_07_183631) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.string "token"
+    t.string "timeZone"
+    t.string "device_id"
+    t.string "device_type"
+    t.string "device_model"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "contact"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
 end

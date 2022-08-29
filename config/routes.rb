@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       post "order/create"=>"payments#order_create"
       post "order/verify"=>"payments#verify_payment"
+      post "user/login" => "sessions#login"
+      post "user/signup" => "sessions#signup"
    end
   end
 end

@@ -6,7 +6,7 @@ class Api::V1::PaymentsController < ApplicationController
 			amount = params[:amount].to_i * 100
 			@user = User.find_by_id(params[:user_id])
 			@order = Order.create(amount:params[:amount],user_id:@user.id)
-			Razorpay.setup('rzp_test_6YnqfdYKC4I8BP', 'puUqR8QDyjQe4QdpNatPOVwT')
+			Razorpay.setup(ENV["Razarpay_key_id"],ENV["Razarpay_key_secret"])
 			Razorpay.headers = {"Content-type" => "application/json"}
 
 			para_attr = {"amount": amount,"currency": "INR","receipt": "#{@order.id}"}
@@ -43,7 +43,6 @@ class Api::V1::PaymentsController < ApplicationController
 								
 			render :json=>{code:200,message:"success",order:@order}
 		rescue Exception => e
-				logger.info "=====#{e}"
 			render :json => {code: 400, message:e.message}
 		end
 	end
@@ -53,13 +52,15 @@ class Api::V1::PaymentsController < ApplicationController
 		@order = @user.restaurant_orders.where(gatewayOrderId: params[:gatewayOrderId]).first
 		if @order.present?
 			@order.update(razorpay_payment_id: params[:razorpay_payment_id], razorpay_signature: params[:razorpay_signature], razorpay_order_id: params[:razorpay_order_id])
-			Razorpay.setup('rzp_test_6YnqfdYKC4I8BP', 'puUqR8QDyjQe4QdpNatPOVwT')
+			Razorpay.setup(ENV["Razarpay_key_id"],ENV["Razarpay_key_secret"])
 						Razorpay.headers = {"Content-type" => "application/json"}
 
 						payment_response = {"razorpay_order_id": params[:razorpay_order_id],"razorpay_payment_id": params[:razorpay_payment_id],"razorpay_signature": params[:razorpay_signature]}
 			@response = Razorpay::Utility.verify_payment_signature(payment_response)
 			if @response != true
-				@order.destroy
+				@order.update(status:false)
+			else
+				@order.update(status:true)
 			end
 			render :json=>{code:200,message:"success",razorpay_response:@response}
 
