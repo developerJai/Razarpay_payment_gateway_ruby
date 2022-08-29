@@ -1,5 +1,6 @@
 class Session < ApplicationRecord
 	belongs_to :user
+	before_create :generateToken
 	
 	def generateToken
   		self.token = loop do

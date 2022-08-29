@@ -1,7 +1,8 @@
 class Api::V1::OrdersController < ApplicationController
    protect_from_forgery with: :null_session
    before_action :amount
-
+   before_action :require_visitor
+   
 	def create
 		amount = params[:amount].to_i * 100
 	    if @user.present?

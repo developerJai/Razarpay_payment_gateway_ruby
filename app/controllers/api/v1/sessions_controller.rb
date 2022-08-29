@@ -3,10 +3,7 @@ class Api::V1::SessionsController < ApplicationController
 	def login
 	  @user = User.find_by_email(params[:email]) if params[:email].present?
 	  if @user && @user.authenticate(params[:password])
-	  	if @user.sessions.present?
-	  		@user.sessions.destroy_all
-	  	end
-	    loginUser
+	    login_user
 	  else
 	    sendResponse('unauthorized',"User",{})
 	  end	   
@@ -24,22 +21,23 @@ class Api::V1::SessionsController < ApplicationController
 	                status:true,
 	                password: params[:password]
 	              })	
-	    	loginUser  
+	    	login_user  
 	end
 
 
-private
+  private
 
   def updateDevice
     @user.sessions.create!({
-      device_id: request.headers["deviceToken"],
-      device_type: request.headers["deviceType"],
-      device_model: request.headers["deviceModel"],
-      timeZone: request.headers["timeZone"]
+      device_id: request.headers["device_token"],
+      device_type: request.headers["device_type"],
+      device_model: request.headers["device_model"],
+      timeZone: request.headers["time_zone"]
     })
   end
 
-  def loginUser
+
+  def login_user
     userSession = updateDevice
     sendResponse('created',"User",{user: @user.as_json(:except=>[:password_digest,:confirm_otp,:created_at,:updated_at,:latitude,:longitude]).merge(accessToken:userSession.token,check_in:check_in)})
   end
