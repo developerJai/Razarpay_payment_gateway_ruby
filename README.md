@@ -1,7 +1,7 @@
 
 # Razarpay Payment Gateway using rails
 
-This is the base ruby gem for interacting with the Razorpay API. This is primarily meant for users who wish to perform interactions with the Razorpay API programatically.
+This codebase is interacting with the Razorpay API. This projects explains how to use Rozerpay Payment Gatewat in our Rails Application.
 
 ## Required dependencies:
 
@@ -10,69 +10,44 @@ This is the base ruby gem for interacting with the Razorpay API. This is primari
 - MySQL is installed
 - Git is installed
 - GitHub account is created
-# Major steps are followed to setup:
-- Major steps are followed to setup:
-- Setup a new Rails app
+- 
+## Major steps are followed to create and setup this project:
+- Cloned/created a new rails project
 - Database configuration setup (using MySQL)
 - Initialize a local repository using git
 - .gitignore file created to add configuration.yml
 - configuration.yml file created to initialize environment variables
-- Create a new remote repository using GitHub
-- Change README.md and documentation added
+- Created a new remote repository using GitHub
+- Implemented required APIs for order and process a payment
+- Changed README.md and documentation added
 - Code Commited and Pushed to GitHub repository
 
-# Create configuration.yml to setup required environment variables
+## Create configuration.yml to setup required environment variables
 * Go to the config directory
-* Create a new file with name configuration.yml
+* Create a new file with name *configuration.yml*
 
-# Required variables to define in configuration.yml
-- ENV["razarpay_key_id"]: "xyz"
+## Required variables to define in configuration.yml
+````
+RAZORPAY_KEY_ID:   enter_key_id_here_xxxxxxxxxxxxxxxxxxxxxx
+RAZORPAY_KEY_SECRET: enter_key_secret_here_xxxxxxxxxxxxxxxxxxxxxx
+````
 
-- ENV["razarpay_key_secret"]: "xyz"
+## Used Gem
+Payment Gateway
+- ` gem 'razorpay'` here is the [link](https://github.com/razorpay/razorpay-ruby)
+Authentication:
+- Devise 
 
+## Implemented APIs Documentation
+### 1. Signup User
+User can signup by providing basic details
+- First Name
+- Last Name
+- Email 
+- Password
 
-# /config/routes.rb
-   Rails.application.routes.draw do
+### 2. Login User
 
-
- 
-    root "articles#index"
-
-    namespace :api,defaults: { format: 'json' } do
-
-    namespace :v1 do
-      post "order/create"=>"payments#order_create"
-      post "order/verify"=>"payments#verify_payment"
-      post "user/login" => "sessions#login"
-      post "user/signup" => "sessions#signup"
-    end
-
-    end
-
-   end
-
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```bash
-  gem 'razorpay'
-```
-
-And then execute:
-
-```bash
-  $ bundle
-```
-
-Or install it yourself as:
-```bash
- $ gem install razorpay
-```
-
-    
-## API Reference
 
 #### Generate API Keys in Test and Live Modes, check error responses, parameters and other APIs.
 
