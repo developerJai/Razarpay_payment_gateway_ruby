@@ -4,9 +4,8 @@ class Api::V1::OrdersController < ApplicationController
    before_action :require_visitor
    
 	def create
-		amount = params[:amount].to_i * 100
 	    if @user.present?
-	     @order = Order.create(amount:params[:amount],user_id:@user.id)
+	     @order = Payments::Create.call(@user, params)
 	     render :json=>{code:200,message:"success",order:@order}
 	    else 
 	     render :json=>{code:400,message:"Something Went Wrong"}

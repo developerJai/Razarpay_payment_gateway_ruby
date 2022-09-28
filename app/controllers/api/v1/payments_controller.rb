@@ -5,7 +5,7 @@ class Api::V1::PaymentsController < ApplicationController
 	def order_create 
 		begin
 			amount = params[:amount].to_i * 100
-			@order = Order.create(amount:params[:amount],user_id:@user.id)
+			@order = Payments::Create.call(@user, params)
 			Razorpay.setup(ENV["razarpay_key_id"],ENV["razarpay_key_secret"])
 			Razorpay.headers = {"Content-type" => "application/json"}
 
