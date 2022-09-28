@@ -6,7 +6,7 @@ class Api::V1::PaymentsController < ApplicationController
 		begin
 			amount = params[:amount].to_i * 100
 			@order = Payments::Create.call(@user, params)
-			Razorpay.setup(ENV["razarpay_key_id"],ENV["razarpay_key_secret"])
+			Razorpay.setup(ENV["RAZORPAY_KEY_ID"],ENV["RAZORPAY_KEY_SECRET"])
 			Razorpay.headers = {"Content-type" => "application/json"}
 
 			para_attr = {"amount": amount,"currency": "INR","receipt": "#{@order.id}"}

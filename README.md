@@ -41,13 +41,25 @@ Authentication:
 ## Implemented APIs Documentation
 ### 1. Signup User
 User can signup by providing basic details
-- First Name
-- Last Name
+- Name
 - Email 
 - Password
 
 ### 2. Login User
+- Email 
+- Password
+### 3. Order create
+```http
+  POST http://localhost:3000/api/v1/order/create
+ ```
+- Amount 
+- user id
 
+### 4.verify_payment
+```http
+  POST http://localhost:3000/api/v1/order/verify
+ ```
+- gateway_order_id
 
 #### Generate API Keys in Test and Live Modes, check error responses, parameters and other APIs.
 
