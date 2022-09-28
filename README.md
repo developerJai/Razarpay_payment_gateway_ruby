@@ -10,7 +10,8 @@ This codebase is interacting with the Razorpay API. This projects explains how t
 - MySQL is installed
 - Git is installed
 - GitHub account is created
-- 
+- Razorpay account created for business
+
 ## Major steps are followed to create and setup this project:
 - Cloned/created a new rails project
 - Database configuration setup (using MySQL)
