@@ -2,7 +2,7 @@ class Api::V1::PaymentsController < ApplicationController
 	protect_from_forgery with: :null_session
 	before_action :require_visitor
     add before_action :authenticate_user!
-    
+
 	def order_create 
 		begin
 			amount = params[:amount].to_i * 100
@@ -19,13 +19,7 @@ class Api::V1::PaymentsController < ApplicationController
 		@order = @user.restaurant_orders.where(gatewayOrderId: params[:gateway_order_id]).first
 		if @order.present?
 			@order.update(razorpay_payment_id: params[:razorpay_payment_id], razorpay_signature: params[:razorpay_signature], razorpay_order_id: params[:razorpay_order_id])
-			Razorpay.setup(ENV["razarpay_key_id"],ENV["razarpay_key_secret"])
-						Razorpay.headers = {"Content-type" => "application/json"}
-
-						payment_response = {"razorpay_order_id": params[:razorpay_order_id],"razorpay_payment_id": params[:razorpay_payment_id],"razorpay_signature": params[:razorpay_signature]}
-			@response = Razorpay::Utility.verify_payment_signature(payment_response)
-
-			@order.update(status:@response)
+			 @response = Payments::Verify.call(@order)
 			
 			render :json=>{code:200,message:"success",razorpay_response:@response}
 

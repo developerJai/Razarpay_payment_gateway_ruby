@@ -35,6 +35,6 @@ class Payments::LinkCreate < ApplicationService
   end
 
   def call
-    @order.save ? @order : nil
+    @order ? @order : nil
   end
 end
