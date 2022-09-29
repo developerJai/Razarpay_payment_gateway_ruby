@@ -38,8 +38,11 @@ Payment Gateway
 - ` gem 'razorpay'` here is the [link](https://github.com/razorpay/razorpay-ruby)
 Authentication:
 - Devise 
+- doorkeeper 
 
 ## Implemented APIs Documentation
+run in rails c >> Doorkeeper::Application.create(name: "iOS client", redirect_uri: "", scopes: "")
+it will provide client_id and client_secret.
 ### 1. Signup User
 User can signup by providing basic details
 - Name
@@ -49,23 +52,59 @@ User can signup by providing basic details
 ### 2. Login User
 - Email 
 - Password
+- client_id
+- client_secret
+
+```http
+    POST http://localhost:3000/oauth/token
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `email` | `string` | **Required**.  |
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `password` | `password_digest` | **Required**. |
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `client_id` | `string` | **Required**. |
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `client_secret` | `string` | **Required**. |
+
+
 ### 3. Order create
 ```http
   POST http://localhost:3000/api/v1/order/create
  ```
 - Amount 
 - user id
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `amount` | `integer` | **Required**.  |
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `user_id` | `reference` | **Required**. |
+
 
 ### 4.verify_payment
 ```http
   POST http://localhost:3000/api/v1/order/verify
  ```
 - gateway_order_id
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `gateway_order_id` | `string` | **Required**.  |
+
 
 #### Generate API Keys in Test and Live Modes, check error responses, parameters and other APIs.
 
 ```http
-  GET https://api.razorpay.com/v1
+  base_url = GET https://api.razorpay.com/v1
 ```
 
 | Parameter | Type     | Description                |
