@@ -5,8 +5,8 @@ This codebase is interacting with the Razorpay API. This projects explains how t
 
 ## Required dependencies:
 
-- Ruby is installed (v 3.0.1)
-- Rails is installed (v 6.1.4)
+- Ruby is installed (v 3.1.0)
+- Rails is installed (v 7.0.2)
 - MySQL is installed
 - Git is installed
 - GitHub account is created
@@ -36,15 +36,15 @@ RAZORPAY_KEY_SECRET: enter_key_secret_here_xxxxxxxxxxxxxxxxxxxxxx
 ## Used Gem
 Payment Gateway
 - ` gem 'razorpay'` here is the [link](https://github.com/razorpay/razorpay-ruby)
-Authentication:
-- Devise 
-- doorkeeper 
-- doorkeeper-jwt 
+
+For authentication:
+- Devise here is the for gem documentation [link]()
+- doorkeeper here is the for gem documentation [link]()
+- doorkeeper-jwt here is the for gem documentation [link]()
 
 
 ## Implemented APIs Documentation
-run in rails c >> Doorkeeper::Application.create(name: "iOS client", redirect_uri: "", scopes: "")
-it will provide client_id and client_secret.
+
 ### 1. Signup User
 User can signup by providing basic details
 - Name
@@ -105,7 +105,7 @@ User can signup by providing basic details
 | `gateway_order_id` | `string` | **Required**.  |
 
 
-#### Generate API Keys in Test and Live Modes, check error responses, parameters and other APIs.
+### Generate API Keys in Test and Live Modes, check error responses, parameters and other APIs.
 
 ```http
   base_url = GET https://api.razorpay.com/v1
@@ -119,106 +119,51 @@ User can signup by providing basic details
 | :-------- | :------- | :------------------------- |
 | `YOUR_SECRET` | `string` | **Required**. Your YOUR_SECRET key |
 
-#### Test and Live Mode API Keys
+### Test and Live Mode API Keys
 
 ```http
   You can use Razorpay APIs in two modes, Test and Live. The API keys are different for each mode. Know about generating API Keys.
 ```
 
+## Required dependencies to setup this project
 
+- ruby v3.1.0
+- rails v7.0.2
 
+## Required data from Razorpay
+We need to register our account on Razorpay as a business. We would need blow keys from our account:
+- key_id
+- key_secret
+You can find your API keys at https://dashboard.razorpay.com/#/app/keys.
 
-
-## Requirements
-
-# Ruby
-ruby "3.1.0"
-
-# Rails
-gem "rails", "~> 7.0.2", ">= 7.0.2.3"
-
-
-## Documentation
-
-Remember to require 'razorpay' before anything else.
-
-Next, you need to setup your key and secret using the following:
-
-
+We will setup these keys in our Rozarpay configurations.
 ```http
 Razorpay.setup('key_id', 'key_secret')
 ```
+### Razorpay features
+Razorpay provides various features to manage the complete payment process for an order.
 
-You can find your API keys at https://dashboard.razorpay.com/#/app/keys.
-## Related
-
-Customer
-
-Token
-
-Order
-
-Payments
-
-Settlements
-
-Fund
-
-Refunds
-
-Invoice
-
-Plan
-
-Item
-
-Subscriptions
-
-Add-on
-
-Payment Links
-
-Smart Collect
-
-Transfer
-
-QR Code
-
-Emandate
-
-Cards
-
-Paper NACH
-
-UPI
-
-Register Emandate and Charge First Payment Together
-
-Register NACH and Charge First Payment Together
-
-Payment Verification
-## Usage/Examples
-
-```javascript
-razorpay_payment_id ,razorpay_payment_id and  razorpay_signature are fetched after success from frontend in payment through razarpay and received  in parameters so it will be used in to verify payments api .
-
-
-
-* api url ==> http://localhost:3000/api/v1/order/create
-	body parameter  {
-	    "user_id":1,
-	    "amount":100
-	}
-
-
-* api url ==> http://localhost:3000/api/v1/order/verify
-	body parameter {
-	    "gatewayOrderId":"xyz",
-
-	    these will be recieved by frontend only with success
-		   "razorpay_payment_id":"xyz",
-		   "razorpay_signature":"xyz",
-		   "razorpay_order_id":"xyz"
-	}
-```
-
+Here is the list from their [documentation](https://github.com/razorpay/razorpay-ruby):
+- Customer
+- Token
+- Order
+- Payments
+- Settlements
+- Fund
+- Refunds
+- Invoice
+- Plan
+- Item
+- Subscriptions
+- Add-on
+- Payment Links
+- Smart Collect
+- Transfer
+- QR Code
+- Emandate
+- Cards
+- Paper NACH
+- UPI
+- Register Emandate and Charge First Payment Together
+- Register NACH and Charge First Payment Together
+- Payment Verification
