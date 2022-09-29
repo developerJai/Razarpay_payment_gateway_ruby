@@ -1,5 +1,5 @@
 
-# Razarpay Payment Gateway using rails
+# Razarpay Payment Gateway Integration
 
 This codebase is interacting with the Razorpay API. This projects explains how to use Rozerpay Payment Gatewat in our Rails Application.
 
