@@ -39,6 +39,8 @@ Payment Gateway
 Authentication:
 - Devise 
 - doorkeeper 
+- doorkeeper-jwt 
+
 
 ## Implemented APIs Documentation
 run in rails c >> Doorkeeper::Application.create(name: "iOS client", redirect_uri: "", scopes: "")

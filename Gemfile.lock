@@ -97,6 +97,8 @@ GEM
     digest (3.1.0)
     doorkeeper (5.6.0)
       railties (>= 5)
+    doorkeeper-jwt (0.4.1)
+      jwt (>= 2.1)
     erubi (1.11.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -114,6 +116,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jwt (2.5.0)
     loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -245,6 +248,7 @@ DEPENDENCIES
   debug
   devise
   doorkeeper
+  doorkeeper-jwt
   importmap-rails
   jbuilder
   puma (~> 5.0)
