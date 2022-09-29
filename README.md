@@ -82,6 +82,7 @@ User can signup by providing basic details
  ```
 - Amount 
 - user id
+
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `amount` | `integer` | **Required**.  |
@@ -96,6 +97,7 @@ User can signup by providing basic details
   POST http://localhost:3000/api/v1/order/verify
  ```
 - gateway_order_id
+
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `gateway_order_id` | `string` | **Required**.  |
