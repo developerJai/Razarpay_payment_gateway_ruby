@@ -6,7 +6,7 @@ class Payments::LinkCreate < ApplicationService
     # Type 1. Normal Text message
     # Type 2.1. Document Message (doc_type: image, pdf, doc etc)
     # Type 2.2. Location Message (doc_type: location  {with: latitude, longitude})
-
+      Razorpay.setup(ENV["RAZORPAY_KEY_ID"],ENV["RAZORPAY_KEY_SECRET"])
       Razorpay.headers = {"Content-type" => "application/json"}
 
       para_attr = {

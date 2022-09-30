@@ -10,7 +10,7 @@ class Payments::Create < ApplicationService
         user_id: @user.id,
         amount: @amount
       })
-      Razorpay.setup('rzp_test_6YnqfdYKC4I8BP', 'puUqR8QDyjQe4QdpNatPOVwT')
+      Razorpay.setup(ENV["RAZORPAY_KEY_ID"],ENV["RAZORPAY_KEY_SECRET"])
       Razorpay.headers = {"Content-type" => "application/json"}
 
       para_attr = {"amount": @amount,"currency": "INR","receipt": "#{@order.id}"}

@@ -18,7 +18,8 @@ Doorkeeper.configure do
 
 
 resource_owner_from_credentials do |_routes|
-   User.find_by(email: params[:email]) || nil
+   User.find_by(email: params[:email])
+&.authenticate(params[:password]) || nil
 end
 
  grant_flows %w(password)
