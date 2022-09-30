@@ -56,6 +56,7 @@ User can signup by providing basic details
 - Password
 - client_id
 - client_secret
+- grant_type
 
 ```http
     POST http://localhost:3000/oauth/token
@@ -64,18 +65,20 @@ User can signup by providing basic details
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `email` | `string` | **Required**.  |
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
 | `password` | `password_digest` | **Required**. |
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
 | `client_id` | `string` | **Required**. |
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
 | `client_secret` | `string` | **Required**. |
+| `grant_type` | `string` | **Required**.  |
+
+
+| Parameter | Type     | Response                |
+| :-------- | :------- | :------------------------- |
+| `access_token` | `string` | `eyJraWQiOiJxVTJERVIyREV***************`  |
+| `token_type` | `string` | `Bearer` |
+| `expires_in` | `integer` | `7200` |
+| `refresh_token` | `string` | `yRUB93xdWSp8WP4hJd4AX***************` |
+| `created_at` | `integer` | `166445***`  |
+
 
 
 ### 3. Order create
@@ -88,13 +91,11 @@ User can signup by providing basic details
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `amount` | `integer` | **Required**.  |
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
 | `user_id` | `reference` | **Required**. |
 
 
-### 4.verify_payment
+
+### 4.Make payment and verify
 ```http
   POST http://localhost:3000/api/v1/order/verify
  ```
@@ -103,6 +104,11 @@ User can signup by providing basic details
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `gateway_order_id` | `string` | **Required**.  |
+
+
+- when success response `true`
+
+- when fails response `false`
 
 
 ### Generate API Keys in Test and Live Modes, check error responses, parameters and other APIs.
@@ -114,9 +120,6 @@ User can signup by providing basic details
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `YOUR_KEY_ID` | `string` | **Required**. YOUR_KEY_ID |
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
 | `YOUR_SECRET` | `string` | **Required**. Your YOUR_SECRET key |
 
 ### Test and Live Mode API Keys
