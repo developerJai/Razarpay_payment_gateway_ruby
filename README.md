@@ -38,9 +38,9 @@ Payment Gateway
 - ` gem 'razorpay'` here is the [link](https://github.com/razorpay/razorpay-ruby)
 
 For authentication:
-- Devise here is the for gem documentation [link](https://rubygems.org/gems/devise/versions/4.8.1)
-- doorkeeper here is the for gem documentation [link](https://github.com/doorkeeper-gem/doorkeeper)
-- doorkeeper-jwt here is the for gem documentation [link](https://github.com/doorkeeper-gem/doorkeeper-jwt)
+- Devise here is the gem documentation [link](https://rubygems.org/gems/devise/versions/4.8.1)
+- doorkeeper here is the gem documentation [link](https://github.com/doorkeeper-gem/doorkeeper)
+- doorkeeper-jwt here is the gem documentation [link](https://github.com/doorkeeper-gem/doorkeeper-jwt)
 
 
 ## Implemented APIs Documentation
@@ -141,6 +141,7 @@ User can signup by providing basic details
 We need to register our account on Razorpay as a business. We would need blow keys from our account:
 - key_id
 - key_secret
+
 You can find your API keys at https://dashboard.razorpay.com/#/app/keys.
 
 We will setup these keys in our Rozarpay configurations.
