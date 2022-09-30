@@ -52,17 +52,13 @@ User can signup by providing basic details
 - Password
 
 ### 2. Login User
-- Email 
-- Password
-- client_id
-- client_secret
-- grant_type
+
 
 ```http
     POST http://localhost:3000/oauth/token
 ```
 
-| Parameter | Type     | Description                |
+| Request Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `email` | `string` | **Required**.  |
 | `password` | `password_digest` | **Required**. |
@@ -71,7 +67,7 @@ User can signup by providing basic details
 | `grant_type` | `string` | **Required**.  |
 
 
-| Parameter | Type     | Response                |
+| Response Parameter | Type     | Response                |
 | :-------- | :------- | :------------------------- |
 | `access_token` | `string` | `eyJraWQiOiJxVTJERVIyREV***************`  |
 | `token_type` | `string` | `Bearer` |
@@ -85,16 +81,14 @@ User can signup by providing basic details
 ```http
   POST http://localhost:3000/api/v1/order/create
  ```
-- Amount 
-- user id
 
-| Parameter | Type     | Description                |
+| Request Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `amount` | `integer` | **Required**.  |
 | `user_id` | `reference` | **Required**. |
 
 
-| Parameter | Type     | Response                |
+| Response Parameter | Type     | Response                |
 | :-------- | :------- | :------------------------- |
 | `id` | `integer` | `1`  |
 | `amount` | `integer` | `120` |
@@ -107,16 +101,18 @@ User can signup by providing basic details
 ```http
   POST http://localhost:3000/api/v1/order/verify
  ```
-- gateway_order_id
 
-| Parameter | Type     | Description                |
+| Request Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `gateway_order_id` | `string` | **Required**.  |
+| `razorpay_payment_id` | `string` | **Required**.  |
+| `razorpay_signature` | `string` | **Required**.  |
 
+| Response Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `status` | `boolean` |  `on success true` |
+| `status` | `boolean` |  `on fails false` |
 
-- when success response `true`
-
-- when fails response `false`
 
 
 ### Generate API Keys in Test and Live Modes, check error responses, parameters and other APIs.

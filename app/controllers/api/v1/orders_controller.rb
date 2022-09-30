@@ -7,7 +7,7 @@ class Api::V1::OrdersController < ApplicationController
 	def create
 	    if @user.present?
 	     @order = Payments::Create.call(@user, params)
-	     render :json=>{code:200,message:"success",order:@order}
+	     render json: @order, each_serializer: OrderSerializer
 	    else 
 	     render :json=>{code:400,message:"Something Went Wrong"}
 	    end

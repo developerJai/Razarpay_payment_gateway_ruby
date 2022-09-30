@@ -8,7 +8,7 @@ class Api::V1::PaymentsController < ApplicationController
 			amount = params[:amount].to_i * 100
 			@order = Payments::Create.call(@user, params)
 								
-			render :json=>{code:200,message:"success",order:@order}
+			render json: @order, each_serializer: OrderSerializer
 		rescue Exception => e
 			render :json => {code: 400, message:e.message}
 		end
