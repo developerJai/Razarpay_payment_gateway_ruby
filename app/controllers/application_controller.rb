@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
  skip_before_action :verify_authenticity_token
- before_action :authenticate_user!
- include ResponseJson
+ protect_from_forgery with: :null_session
 
     def require_visitor
 	    unless user_logged_in?
@@ -40,7 +39,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def user_logged_in?
-	  	initSidekiq
+	  	# initSidekiq
 	    @session = Session.find_by_token(request.headers["sessionToken"]) if request.headers["sessionToken"].present?
 	    @session.update(language:request.headers["language"]) if @session
 	    @user = @session.user if @session

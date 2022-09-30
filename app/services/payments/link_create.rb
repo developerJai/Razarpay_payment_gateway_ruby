@@ -10,15 +10,15 @@ class Payments::LinkCreate < ApplicationService
       Razorpay.headers = {"Content-type" => "application/json"}
 
       para_attr = {
-       "amount": amount,
+       "amount": @order.amount,
        "currency": "INR",
        "accept_partial": false,
        "first_min_partial_amount": 100,
                   "description": "Restaurant Order",
                   "customer": {
-                    "name": @user.name,
+                    "name": @user.email.split('@').first,
                     "email": @user.email,
-                    "contact": @user.contact
+                    "contact": ""
                   },
                   "notify": {
                     "sms": true,

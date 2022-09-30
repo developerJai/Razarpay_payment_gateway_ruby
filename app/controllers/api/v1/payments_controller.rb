@@ -1,12 +1,10 @@
 class Api::V1::PaymentsController < ApplicationController
-	protect_from_forgery with: :null_session
-	before_action :require_visitor
-    add before_action :authenticate_user!
-
 	def order_create 
 		begin
+		    @user = User.find_by_id(params[:user_id])
+		    p @user
 			amount = params[:amount].to_i * 100
-			@order = Payments::Create.call(@user, params)
+			@order = Payments::Create.call(@user, amount)
 								
 			render json: @order, each_serializer: OrderSerializer
 		rescue Exception => e
