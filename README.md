@@ -149,7 +149,7 @@ We will setup these keys in our Rozarpay configurations.
 Razorpay.setup('key_id', 'key_secret')
 ```
 ### Razorpay features
-Razorpay provides various features to manage the complete payment process for an order.
+Razorpay provides various features to manage the complete payment process for an order [link](https://razorpay.com/docs/api/basics).
 
 Here is the list from their [documentation](https://github.com/razorpay/razorpay-ruby):
 - Customer
