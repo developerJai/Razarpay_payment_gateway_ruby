@@ -1,7 +1,7 @@
 
-# Razarpay Payment Gateway Integration
+# Razorpay Payment Gateway Integration
 
-This codebase is interacting with the Razorpay API. This projects explains how to use Rozerpay Payment Gatewat in our Rails Application.
+This codebase is interacting with the Razorpay API. This projects explains how to use Razorpay Payment Gatewat in our Rails Application.
 
 ## Required dependencies:
 
@@ -92,6 +92,14 @@ User can signup by providing basic details
 | :-------- | :------- | :------------------------- |
 | `amount` | `integer` | **Required**.  |
 | `user_id` | `reference` | **Required**. |
+
+
+| Parameter | Type     | Response                |
+| :-------- | :------- | :------------------------- |
+| `id` | `integer` | `1`  |
+| `amount` | `integer` | `120` |
+| `user_id` | `reference` | `2` |
+| `gateway_order_id` | `string` | `yRUB93****` |
 
 
 
