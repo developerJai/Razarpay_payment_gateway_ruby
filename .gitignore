@@ -83,3 +83,7 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
+
+Gemfile.lock
+/config/configuration.yml
+/db/schema.rb
