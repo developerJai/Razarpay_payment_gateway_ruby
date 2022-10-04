@@ -1,0 +1,150 @@
+{
+	"info": {
+		"_postman_id": "6dc1719e-56b0-4edb-a7c7-c73dcd1d56eb",
+		"name": "Razarpay-Payment-Gateway-ROR",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/api/v1/order/create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "eyJraWQiOiJxVTJERVIyREVOUlhxU3RiTUJzZS1JeFlDTlV6UWlUbzlaQWNMU1JnMkdNIiwiYWxnIjoiSFM1MTIifQ.eyJpc3MiOiJNeSBBcHAiLCJpYXQiOjE2NjQ1MzY2MDEsImp0aSI6ImY0YTNlNjU4LWVlMzctNDFkYS1iOGY5LTM3Nzg5ZjllMzRiZiIsInVzZXIiOnsiaWQiOjIsImVtYWlsIjoia3VzaGFncmFAZ21haWwuY29tIn19.x6KCR0MwblZhaHPEyOrg3nptO3T3dRrt1jmbg6NfhgPadJneda_eu443lMJVKBNXY2QjSEV8tL_YvEcpPElwLg",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJraWQiOiJ3TUVFRV9ZWXNFMjdiYllqSENXbU1HZzVqMS1FS0lPSGZGMkR1SHVwMlF3IiwiYWxnIjoiSFM1MTIifQ.eyJpc3MiOiJNeSBBcHAiLCJpYXQiOjE2NjQ3Nzg1MDksImp0aSI6ImZhNmU2ODAzLTE2NDItNDA2YS05NjdmLTAxMmZkNTEyZWVlNSIsInVzZXIiOnsiaWQiOjEsImVtYWlsIjoia3VzaGFncmFAZ21haWwuY29tIn19.ixritWyQ4nU6RIRy2Tvas3Q7DszTPtmZe9WVSGq-hTnw8CtIqgpngLVoW4mAoMGthp7j5ferORegQrJRA52PnQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\":100,\n    \"currency\":\"INR\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/order/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"order",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/oauth/token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "kushagra@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "wMEEE_YYsE27bbYjHCWmMGg5j1-EKIOHfF2DuHup2Qw",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "Z-SgbE0-3qNLH-2EjqSx-l3sI4RwtRv_CLZsDSNnWz0",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/oauth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/v1/order/verify",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJraWQiOiJ3TUVFRV9ZWXNFMjdiYllqSENXbU1HZzVqMS1FS0lPSGZGMkR1SHVwMlF3IiwiYWxnIjoiSFM1MTIifQ.eyJpc3MiOiJNeSBBcHAiLCJpYXQiOjE2NjQ3Nzg1MDksImp0aSI6ImZhNmU2ODAzLTE2NDItNDA2YS05NjdmLTAxMmZkNTEyZWVlNSIsInVzZXIiOnsiaWQiOjEsImVtYWlsIjoia3VzaGFncmFAZ21haWwuY29tIn19.ixritWyQ4nU6RIRy2Tvas3Q7DszTPtmZe9WVSGq-hTnw8CtIqgpngLVoW4mAoMGthp7j5ferORegQrJRA52PnQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"gateway_order_id\": \"order_KPCfDTLW3uTfx7\",\n//   \"razorpay_order_id\": \"order_KPCUbAnQkBTAPH\",\n//   \"razorpay_payment_id\": \"plink_KPCUc10L8F3QE3\",\n  \"razorpay_signature\": \"07ae18789e35093e51d0a491eb9922646f3f82773547e5b0f67ee3f2d3bf7d5b\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/order/verify",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"order",
+						"verify"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

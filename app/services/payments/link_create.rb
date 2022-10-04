@@ -2,11 +2,7 @@ class Payments::LinkCreate < ApplicationService
   def initialize(user, order)
     @user = user
     @order = order
-    # There will be two types of messages
-    # Type 1. Normal Text message
-    # Type 2.1. Document Message (doc_type: image, pdf, doc etc)
-    # Type 2.2. Location Message (doc_type: location  {with: latitude, longitude})
-
+      Razorpay.setup(ENV["RAZORPAY_KEY_ID"],ENV["RAZORPAY_KEY_SECRET"])
       Razorpay.headers = {"Content-type" => "application/json"}
 
       para_attr = {
@@ -31,7 +27,7 @@ class Payments::LinkCreate < ApplicationService
 
       payment_link = Razorpay::PaymentLink.create(para_attr.to_json)
           
-      @order.update(Paylink_id: payment_link.id,payment_link:payment_link.short_url)
+      @order.update(pay_link_id: payment_link.id,payment_link:payment_link.short_url)
   end
 
   def call

@@ -1,16 +1,15 @@
 class Payments::Create < ApplicationService
-  def initialize(user, amount)
+  def initialize(user, amount, currency)
     @user = user
     @amount = amount
-    # There will be two types of messages
-    # Type 1. Normal Text message
-    # Type 2.1. Document Message (doc_type: image, pdf, doc etc)
-    # Type 2.2. Location Message (doc_type: location  {with: latitude, longitude})
+    @currency = currency
     @order = Order.new({
         user_id: @user.id,
+        currency: @currency,
         amount: @amount
       })
-      Razorpay.setup('rzp_test_6YnqfdYKC4I8BP', 'puUqR8QDyjQe4QdpNatPOVwT')
+      @amount = @amount.to_i * 100
+      Razorpay.setup(ENV["RAZORPAY_KEY_ID"],ENV["RAZORPAY_KEY_SECRET"])
       Razorpay.headers = {"Content-type" => "application/json"}
 
       para_attr = {"amount": @amount,"currency": "INR","receipt": "#{@order.id}"}
