@@ -1,5 +1,6 @@
 class Payments::Create < ApplicationService
   def initialize(user, amount, currency)
+    # Creating order and initiating payment
     @user = user
     @amount = amount
     @currency = currency

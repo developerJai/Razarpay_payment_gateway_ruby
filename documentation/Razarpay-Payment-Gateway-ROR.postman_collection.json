@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "6dc1719e-56b0-4edb-a7c7-c73dcd1d56eb",
-		"name": "Razarpay-Payment-Gateway-ROR",
+		"name": "Razorpay-Payment-Gateway-ROR",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [

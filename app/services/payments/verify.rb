@@ -1,5 +1,6 @@
 class Payments::Verify < ApplicationService
   def initialize(order)
+    # Verify payment signature after payment successful/failed on server side
     @order = order
     Razorpay.setup(ENV["RAZORPAY_KEY_ID"],ENV["RAZORPAY_KEY_SECRET"])
     Razorpay.headers = {"Content-type" => "application/json"}

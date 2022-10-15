@@ -1,5 +1,6 @@
 class Payments::LinkCreate < ApplicationService
   def initialize(user, order)
+    # Creating a payment link for the order
     @user = user
     @order = order
     Razorpay.setup(ENV["RAZORPAY_KEY_ID"],ENV["RAZORPAY_KEY_SECRET"])
